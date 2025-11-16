@@ -1,0 +1,17 @@
+11name: Keep Strapi Admin Alive
+
+# تشغيل Cron Job كل ساعة
+on:
+  schedule:
+    - cron: "0 * * * *"   # كل ساعة على رأس الساعة
+  workflow_dispatch:        # إمكانية التشغيل يدوي
+
+jobs:
+  ping-admin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Strapi Admin Panel
+        run: |
+          echo "Pinging Strapi Admin..."
+          curl -I https://uplifting-presence-2e941f1ba9.strapiapp.com/admin
